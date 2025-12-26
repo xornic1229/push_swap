@@ -6,7 +6,7 @@
 /*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 17:16:20 by jaialons          #+#    #+#             */
-/*   Updated: 2025/12/19 18:45:03 by jaialons         ###   ########.fr       */
+/*   Updated: 2025/12/26 21:16:05 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,13 @@ void				swap(t_stack *stack);
 void				push(t_stack *from, t_stack *to);
 void				rotate(t_stack *stack);
 void				reverse_rotate(t_stack *stack);
-
+int					is_sorted(t_stack *stack);
+t_node				*find_min(t_stack *stack);
+t_node				*find_max(t_stack *stack);
+int					get_position(t_stack *stack, t_node *node);
+int					get_min_index(t_stack *stack);
+int					count_until_index(t_node *head, int index);
+void				push_swap_algorithm(t_stack *stack_a, t_stack *stack_b);
+void				sort_three(t_stack *stack);
+void				sort_seven(t_stack *stack_a, t_stack *stack_b, int n);
+void				sort_larger(t_stack *stack_a, t_stack *stack_b);

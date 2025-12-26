@@ -6,7 +6,7 @@
 /*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 17:46:10 by jaialons          #+#    #+#             */
-/*   Updated: 2025/12/19 18:40:38 by jaialons         ###   ########.fr       */
+/*   Updated: 2025/12/26 21:19:19 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_stack_a_one_arg(t_stack *stack_a, char const *argv)
 void	init_stack_a_multiple_args(t_stack *stack_a, char const *argv[])
 {
 	int		i;
-	int		elem;
 	t_node	*new_node;
 
 	i = 1;

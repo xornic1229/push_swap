@@ -6,7 +6,7 @@
 /*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 17:23:25 by jaialons          #+#    #+#             */
-/*   Updated: 2025/12/19 18:52:24 by jaialons         ###   ########.fr       */
+/*   Updated: 2025/12/26 21:19:19 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ void	probar_stack(t_stack *stack_a,t_stack *stack_b)
 
 int	main(int argc, char const *argv[])
 {
-	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	i = 0;
 	stack_a = init_stack();
 	stack_b = init_stack();
 	if (!stack_a || !stack_b)
@@ -56,6 +54,6 @@ int	main(int argc, char const *argv[])
 		init_stack_a_one_arg(stack_a, argv[1]);
 	else
 		init_stack_a_multiple_args(stack_a, argv);
-	probar_stack(stack_a,stack_b);
+	push_swap_algorithm(stack_a, stack_b);
 	return (0);
 }
