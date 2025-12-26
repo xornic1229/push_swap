@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 18:39:46 by jsagaro-          #+#    #+#             */
-/*   Updated: 2024/10/02 19:32:58 by jsagaro-         ###   ########.fr       */
+/*   Created: 2025/09/29 19:03:10 by jaialons          #+#    #+#             */
+/*   Updated: 2025/11/20 12:01:56 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*aux;
-	int		i;
+	char	*last;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
-	aux = NULL;
+	last = NULL;
 	i = 0;
 	while (s[i])
 	{
-		if ((char)s[i] == (char)c)
-			aux = ((char *)&s[i]);
+		if (s[i] == (char)c)
+			last = (char *)(s + i);
 		i++;
 	}
-	if ((char)c == '\0')
-		return ((char *)&s[i]);
-	return (aux);
+	if (c == '\0')
+		return ((char *)(s + i));
+	return (last);
 }

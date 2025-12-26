@@ -3,55 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 18:21:33 by jsagaro-          #+#    #+#             */
-/*   Updated: 2024/10/02 17:15:33 by jsagaro-         ###   ########.fr       */
+/*   Created: 2025/10/07 13:36:38 by jaialons          #+#    #+#             */
+/*   Updated: 2025/11/20 12:03:54 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-static unsigned int	result_size(int n)
+static size_t	ft_num_len(int n)
 {
-	unsigned int	size;
+	size_t	len;
 
-	size = 0;
+	len = 0;
 	if (n <= 0)
-		size = 1;
+		len++;
 	while (n != 0)
 	{
 		n /= 10;
-		size++;
+		len++;
 	}
-	return (size);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*result;
-	unsigned int	size;
-	int				i;
+	char	*res;
+	size_t	len;
+	long	num;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	size = result_size(n);
-	result = (char *)malloc((size + 1) * sizeof(char));
-	if (!result)
+	num = n;
+	len = ft_num_len(n);
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (NULL);
-	result[size] = '\0';
-	if (n < 0)
+	res[len] = '\0';
+	if (num == 0)
+		res[0] = '0';
+	if (num < 0)
 	{
-		n = -n;
-		result[0] = '-';
+		res[0] = '-';
+		num = -num;
 	}
-	i = size - 1;
-	if (n == 0)
-		result[0] = '0';
-	while (n != 0)
+	while (num > 0)
 	{
-		result[i--] = (n % 10) + '0';
-		n /= 10;
+		res[--len] = (num % 10) + '0';
+		num /= 10;
 	}
-	return (result);
+	return (res);
 }

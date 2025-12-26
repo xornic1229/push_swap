@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 13:37:51 by jaialons          #+#    #+#             */
-/*   Updated: 2025/11/20 12:03:00 by jaialons         ###   ########.fr       */
+/*   Created: 2025/10/15 13:56:01 by jaialons          #+#    #+#             */
+/*   Updated: 2025/10/15 20:52:02 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_printf.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_printf(char const *format, ...)
 {
-	char			*sol;
-	unsigned int	i;
-	size_t			len;
+	va_list	args;
+	int		i;
+	int		count;
 
-	if (!s || !f)
-		return (NULL);
-	len = ft_strlen(s);
-	sol = malloc(sizeof(char) * (len + 1));
-	if (!sol)
-		return (NULL);
+	va_start(args, format);
 	i = 0;
-	while (s[i])
+	count = 0;
+	while (format[i])
 	{
-		sol[i] = f(i, s[i]);
+		if (format[i] == '%')
+		{
+			i++;
+			count += process(args, format[i]);
+		}
+		else
+		{
+			ft_putchar(format[i]);
+			count++;
+		}
 		i++;
 	}
-	sol[i] = '\0';
-	return (sol);
+	va_end(args);
+	return (count);
 }

@@ -3,39 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 19:43:11 by jsagaro-          #+#    #+#             */
-/*   Updated: 2024/10/02 17:09:47 by jsagaro-         ###   ########.fr       */
+/*   Created: 2025/09/29 18:04:08 by jaialons          #+#    #+#             */
+/*   Updated: 2025/11/20 12:03:19 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-static char	*ft_strcpy(char *dest, char *src)
+char	*ft_strdup(const char *src)
 {
-	char	*dest_start;
+	size_t	i;
+	size_t	len;
+	char	*copy;
 
-	dest_start = dest;
-	while (*src)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	*dest = '\0';
-	return (dest_start);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*pt;
-	int		pt_len;
-
-	pt_len = ft_strlen(s) + 1;
-	pt = (char *)malloc(pt_len * sizeof(char));
-	if (!pt)
+	len = 0;
+	while (src[len])
+		len++;
+	copy = (char *)malloc(sizeof(char) * (len + 1));
+	if (!copy)
 		return (NULL);
-	ft_strcpy(pt, (char *)s);
-	return (pt);
+	i = 0;
+	while (src[i])
+	{
+		copy[i] = src[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

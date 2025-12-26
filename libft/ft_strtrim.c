@@ -3,29 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 17:07:03 by jsagaro-          #+#    #+#             */
-/*   Updated: 2024/10/02 19:03:18 by jsagaro-         ###   ########.fr       */
+/*   Created: 2025/10/01 19:11:30 by jaialons          #+#    #+#             */
+/*   Updated: 2025/11/20 12:02:13 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
+
+static int	ft_isinset(char c, char const *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	char	*result;
+	size_t	start;
+	size_t	end;
+	size_t	len;
+	char	*sol;
 
 	if (!s1 || !set)
 		return (NULL);
-	i = 0;
-	j = ft_strlen(s1) - 1;
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	while (j > i && ft_strchr(set, s1[j]))
-		j--;
-	result = ft_substr(s1, i, j - i + 1);
-	return (result);
+	start = 0;
+	while (s1[start] && ft_isinset(s1[start], set))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && ft_isinset(s1[end - 1], set))
+		end--;
+	len = end - start;
+	sol = malloc(len + 1);
+	if (!sol)
+		return (NULL);
+	ft_strlcpy(sol, s1 + start, len + 1);
+	return (sol);
 }
