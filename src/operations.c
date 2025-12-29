@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack *stack, int stack_id)
 {
 	t_node	*first;
 	t_node	*second;
@@ -30,9 +30,13 @@ void	swap(t_stack *stack)
 	second->next = first;
 	first->prev = second;
 	stack->head = second;
+	if (stack_id == 'a')
+		ft_printf("sa\n");
+	else if (stack_id == 'b')
+		ft_printf("sb\n");
 }
 
-void	push(t_stack *from, t_stack *to)
+void	push(t_stack *from, t_stack *to, int to_stack_id)
 {
 	t_node	*node;
 
@@ -53,9 +57,13 @@ void	push(t_stack *from, t_stack *to)
 	to->head = node;
 	from->size--;
 	to->size++;
+	if (to_stack_id == 'a')
+		ft_printf("pa\n");
+	else if (to_stack_id == 'b')
+		ft_printf("pb\n");
 }
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stack, int stack_id)
 {
 	t_node	*first;
 	t_node	*new_head;
@@ -70,9 +78,13 @@ void	rotate(t_stack *stack)
 	first->prev = stack->tail;
 	first->next = NULL;
 	stack->tail = first;
+	if (stack_id == 'a')
+		ft_printf("ra\n");
+	else if (stack_id == 'b')
+		ft_printf("rb\n");
 }
 
-void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack, int stack_id)
 {
 	t_node	*last;
 	t_node	*new_tail;
@@ -87,4 +99,8 @@ void	reverse_rotate(t_stack *stack)
 	stack->head->prev = last;
 	last->prev = NULL;
 	stack->head = last;
+	if (stack_id == 'a')
+		ft_printf("rra\n");
+	else if (stack_id == 'b')
+		ft_printf("rrb\n");
 }

@@ -1,12 +1,13 @@
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+BIN_DIR = bin
 
-SRCS = push_swap.c \
+SRCS = src/push_swap.c \
 	src/init.c \
 	src/operations.c \
 	src/aux_1.c \
-	src/aux_2.c \
+	src/index.c \
 	src/algoritm_1.c \
 	libft/ft_atoi.c \
 	libft/ft_bzero.c \
@@ -50,18 +51,19 @@ SRCS = push_swap.c \
 	libft/get_next_line/get_next_line_bonus.c \
 	libft/get_next_line/get_next_line_utils_bonus.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.c
+$(BIN_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) push_swap.h.gch
+	rm -rf $(BIN_DIR) push_swap.h.gch
 
 fclean: clean
 	rm -f $(NAME)
