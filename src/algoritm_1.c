@@ -27,7 +27,7 @@ void	push_swap_algorithm(t_stack *stack_a, t_stack *stack_b)
 	else if (size_a <= 5)
 		sort_small(stack_a, stack_b);
 	else
-		sort_larger(stack_a, stack_b);
+		sort_radix(stack_a, stack_b);
 }
 
 void	sort_three(t_stack *stack)
@@ -79,7 +79,7 @@ void	sort_small(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void sort_larger(t_stack *stack_a, t_stack *stack_b)
+void sort_radix(t_stack *stack_a, t_stack *stack_b)
 {
     int max_bits = get_max_bits(stack_a->size);
     int i, count;

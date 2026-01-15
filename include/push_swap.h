@@ -43,13 +43,13 @@ void				rotate(t_stack *stack, int stack_id);
 void				reverse_rotate(t_stack *stack, int stack_id);
 //aux_1.c
 int					is_sorted(t_stack *stack);
-int get_max_bits(int size);
+int					get_max_bits(int size);
 
 //algoritm_1.c
 void				push_swap_algorithm(t_stack *stack_a, t_stack *stack_b);
 void				sort_three(t_stack *stack);
 void				sort_small(t_stack *stack_a, t_stack *stack_b);
-void				sort_larger(t_stack *stack_a, t_stack *stack_b);
+void				sort_radix(t_stack *stack_a, t_stack *stack_b);
 //index.c
 void				index_stack(t_stack *stack);
 int					*bubble_sort(int *arr, int n);
