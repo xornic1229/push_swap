@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 BIN_DIR = bin
 
 SRCS = src/push_swap.c \
-	src/init.c \
+	src/stack_init.c \
+	src/stack_parse.c \
 	src/operations.c \
 	src/aux_1.c \
 	src/index.c \

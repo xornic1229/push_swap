@@ -6,7 +6,7 @@
 /*   By: jaialons <jaialons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 17:23:25 by jaialons          #+#    #+#             */
-/*   Updated: 2025/12/26 21:19:19 by jaialons         ###   ########.fr       */
+/*   Updated: 2026/01/16 20:17:10 by jaialons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,29 @@ int	main(int argc, char const *argv[])
 
 	stack_a = init_stack();
 	stack_b = init_stack();
-	if (!stack_a || !stack_b)
+	if (!stack_a || !stack_b || argc == 1)
 		return (1);
-	if (argc == 1)
-		return (1);
-	else if (argc == 2)
-		init_stack_a_one_arg(stack_a, argv[1]);
+	if (argc == 2)
+	{
+		if (!init_stack_a_one_arg(stack_a, argv[1]))
+		{
+			ft_putendl_fd("Error", STDERR_FILENO);
+			return (1);
+		}
+	}
 	else
-		init_stack_a_multiple_args(stack_a, argv);
+	{
+		if (!init_stack_a_multiple_args(stack_a, argv))
+		{
+			ft_putendl_fd("Error", STDERR_FILENO);
+			return (1);
+		}
+	}
+	if (stack_a->size == 0)
+	{
+		ft_putendl_fd("Error", STDERR_FILENO);
+		return (1);
+	}
 	push_swap_algorithm(stack_a, stack_b);
 	return (0);
 }
